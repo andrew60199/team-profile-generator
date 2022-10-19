@@ -23,5 +23,8 @@
   "homepage": "https://github.com/andrew60199/team-profile-generator#readme",
   "devDependencies": {
     "jest": "^29.2.0"
+  },
+  "dependencies": {
+    "inquirer": "^8.2.4"
   }
 }
