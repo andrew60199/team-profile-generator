@@ -84,39 +84,44 @@ const employeeQuestions = [
     }
 ]
 
+const responses = []
+
 const addemployee = () => {
     inquirer.prompt(employeeQuestions)
         .then(data => {
-
-            // Error is occurred here. Since response is not defined. 
+ 
             responses.push(data)
             console.log(responses)
 
             // If they entered yes to add another employee we will then loop over the questions again
             if (data.addAnotherEmployee) {
                 addemployee()
-            }
+            } else {
+                // Once they have entered enough team members we can then do something with the data!
+                console.log(`I ran on the way back!`)
 
-            // Tried returning the responses but it didn't work
-            // return responses.push(data)
+
+            }
         })
 }
 
+
 const collectData = () => {
-    const responses = []
 
     inquirer.prompt(managerQuestions)
         .then(data => {
-            // This works fine... 
+
             responses.push(data)
             console.log(responses)
+            // Create a function that creates HTML card
 
-            // But now its a challenge to get the other responses all together
             addemployee()
-
+                
         })
         .catch((err) => console.error(err));
 
 }
 
-module.exports = collectData
+collectData()
+
+// module.exports = collectData
