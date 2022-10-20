@@ -1,10 +1,5 @@
-const inquirer = require('inquirer')
-const Employee = require('../lib/Employee.js')
-const Engineer = require('../lib/Engineer.js')
-const Intern = require('../lib/Intern.js')
-const Manager = require('../lib/Manager.js')
-
 // Begin by defining the questions we will ask
+
 const managerQuestions = [
     {
         type: 'input',
@@ -84,44 +79,4 @@ const employeeQuestions = [
     }
 ]
 
-const responses = []
-
-const addemployee = () => {
-    inquirer.prompt(employeeQuestions)
-        .then(data => {
- 
-            responses.push(data)
-            console.log(responses)
-
-            // If they entered yes to add another employee we will then loop over the questions again
-            if (data.addAnotherEmployee) {
-                addemployee()
-            } else {
-                // Once they have entered enough team members we can then do something with the data!
-                console.log(`I ran on the way back!`)
-
-
-            }
-        })
-}
-
-
-const collectData = () => {
-
-    inquirer.prompt(managerQuestions)
-        .then(data => {
-
-            responses.push(data)
-            console.log(responses)
-            // Create a function that creates HTML card
-
-            addemployee()
-                
-        })
-        .catch((err) => console.error(err));
-
-}
-
-collectData()
-
-// module.exports = collectData
+module.exports = { managerQuestions, employeeQuestions}
